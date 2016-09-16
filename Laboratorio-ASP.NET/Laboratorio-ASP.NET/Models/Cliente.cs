@@ -24,16 +24,17 @@ namespace Laboratorio_ASP.NET.Models
     
         [Display(Name = "Cédula:")]
         public string Cedula { get; set; }
-        [Display(Name = "Cédula:")]
+        [Display(Name = "Nombre:")]
         public string Nombre { get; set; }
         [Display(Name = "1° Apellido:")]
         public string Apellido1 { get; set; }
         [Display(Name = "2° Apellido:")]
         public string Apellido2 { get; set; }
+        [Display(Name = "Correo:")]
         public string Correo { get; set; }
         [Display(Name = "Dirección:")]
         public string Direccion { get; set; }
-    
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Cuenta> Cuenta { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

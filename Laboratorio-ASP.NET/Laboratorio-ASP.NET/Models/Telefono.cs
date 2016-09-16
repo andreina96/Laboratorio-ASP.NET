@@ -11,10 +11,12 @@ namespace Laboratorio_ASP.NET.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class Telefono
     {
         public string Cedula { get; set; }
+        [Display(Name = "Número de teléfono:")]
         public string Numero { get; set; }
     
         public virtual Cliente Cliente { get; set; }

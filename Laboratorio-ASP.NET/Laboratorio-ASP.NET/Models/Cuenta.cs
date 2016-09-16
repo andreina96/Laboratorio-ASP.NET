@@ -11,11 +11,14 @@ namespace Laboratorio_ASP.NET.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class Cuenta
     {
         public string Cedula { get; set; }
+        [Display(Name = "Número de cuenta:")]
         public string Numero { get; set; }
+        [Display(Name = "Tipo de cuenta:")]
         public string Tipo { get; set; }
     
         public virtual Cliente Cliente { get; set; }
