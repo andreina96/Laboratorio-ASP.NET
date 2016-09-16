@@ -1,0 +1,26 @@
+USE LaboratorioMVC;
+
+CREATE TABLE Cliente(
+	Cedula		VARCHAR(9)		PRIMARY KEY,
+	Nombre		VARCHAR(10)		NOT NULL,
+	Apellido1	VARCHAR(10)		NOT NULL,
+	Apellido2	VARCHAR(10)		NOT NULL,
+	Correo		VARCHAR(20)		NOT NULL,
+	Direccion	VARCHAR(30)
+);
+
+CREATE TABLE Telefono(
+	Cedula		VARCHAR(9)		NOT NULL,
+	Numero		VARCHAR(8)		NOT NULL,
+	CONSTRAINT FK_CedulaT FOREIGN KEY (Cedula) REFERENCES Cliente(Cedula),
+	CONSTRAINT PK_Telefono PRIMARY KEY(Cedula, Numero)
+);
+
+CREATE TABLE Cuenta(
+	Cedula		VARCHAR(9)		NOT NULL,
+	Numero		VARCHAR(8)		NOT NULL,
+	Tipo		VARCHAR(10)		NOT NULL,
+	CONSTRAINT FK_CedulaC FOREIGN KEY (Cedula) REFERENCES Cliente(Cedula),
+	CONSTRAINT PK_Cuenta PRIMARY KEY(Cedula, Numero)
+);
+
