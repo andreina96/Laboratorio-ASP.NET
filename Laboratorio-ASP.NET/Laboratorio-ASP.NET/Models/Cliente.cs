@@ -11,7 +11,8 @@ namespace Laboratorio_ASP.NET.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class Cliente
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -21,11 +22,16 @@ namespace Laboratorio_ASP.NET.Models
             this.Telefono = new HashSet<Telefono>();
         }
     
+        [Display(Name = "Cédula:")]
         public string Cedula { get; set; }
+        [Display(Name = "Cédula:")]
         public string Nombre { get; set; }
+        [Display(Name = "1° Apellido:")]
         public string Apellido1 { get; set; }
+        [Display(Name = "2° Apellido:")]
         public string Apellido2 { get; set; }
         public string Correo { get; set; }
+        [Display(Name = "Dirección:")]
         public string Direccion { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

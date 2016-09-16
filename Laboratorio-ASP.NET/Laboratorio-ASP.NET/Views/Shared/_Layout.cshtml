@@ -20,11 +20,6 @@
                 @Html.ActionLink("BancaAn", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
             </div>
             <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Mi cuenta", "Index", "Home")</li>
-                    <li>@Html.ActionLink("Cuentas", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contactar", "Contact", "Home")</li>
-                </ul>
                 @Html.Partial("_LoginPartial")
             </div>
         </div>
