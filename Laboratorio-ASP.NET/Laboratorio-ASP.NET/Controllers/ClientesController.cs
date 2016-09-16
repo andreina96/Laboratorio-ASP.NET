@@ -23,15 +23,6 @@ namespace Laboratorio_ASP.NET.Controllers
         // GET: Clientes/Details/5
         public ActionResult Details(string id)
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Cliente cliente = db.Cliente.Find(id);
-            if (cliente == null)
-            {
-                return HttpNotFound();
-            }
             return View(cliente);
         }
 

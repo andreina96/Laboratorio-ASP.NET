@@ -7,7 +7,7 @@
 
 <h2>Index</h2>
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Crear nuevo", "Create")
 </p>
 <table class="table">
     <tr>
@@ -67,7 +67,7 @@
                 }) |
                 @Html.ActionLink("Detalles", "Details", new
                 {
-                    id = Model.listaClientes.ElementAt(i).Cedula
+                    id = Model.listaClientes.ElementAt(i)
                 }) |
                 @Html.ActionLink("Eliminar", "Delete", new
                 {
