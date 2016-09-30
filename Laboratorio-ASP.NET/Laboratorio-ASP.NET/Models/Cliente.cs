@@ -21,7 +21,7 @@ namespace Laboratorio_ASP.NET.Models
             this.Cuenta = new HashSet<Cuenta>();
             this.Telefono = new HashSet<Telefono>();
         }
-    
+
         [Display(Name = "Cédula:")]
         public string Cedula { get; set; }
         [Display(Name = "Nombre:")]

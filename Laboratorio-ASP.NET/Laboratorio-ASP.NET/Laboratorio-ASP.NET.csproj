@@ -298,6 +298,8 @@
     <Content Include="Views\ClientesV2\Index.cshtml" />
     <Content Include="Views\ClientesV2\Create.cshtml" />
     <Content Include="Views\ClientesV2\Details.cshtml" />
+    <Content Include="Views\ClientesV2\Edit.cshtml" />
+    <Content Include="Views\ClientesV2\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

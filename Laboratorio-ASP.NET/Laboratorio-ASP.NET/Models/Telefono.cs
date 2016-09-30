@@ -15,8 +15,10 @@ namespace Laboratorio_ASP.NET.Models
 
     public partial class Telefono
     {
+        [Editable(false)]
         public string Cedula { get; set; }
         [Display(Name = "Número de teléfono:")]
+        [Editable(false)]
         public string Numero { get; set; }
     
         public virtual Cliente Cliente { get; set; }

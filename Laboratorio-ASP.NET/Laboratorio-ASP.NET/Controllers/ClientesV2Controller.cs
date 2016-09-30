@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using System.Net;
 using Laboratorio_ASP.NET.Models;
+using System.Data.Entity;
 
 namespace Laboratorio_ASP.NET.Controllers
 {
@@ -19,6 +20,73 @@ namespace Laboratorio_ASP.NET.Controllers
             modelo.listaCuentas = db.Cuenta.ToList();
             modelo.listaTelefonos = db.Telefono.ToList();
             return View(modelo);        }
+
+        public ActionResult Edit(string id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Cliente c = db.Cliente.Find(id);
+            if (c == null)
+            {
+                return HttpNotFound();
+            }
+            ModeloIntermedio modelo = new ModeloIntermedio();
+            modelo.modeloCliente = c;
+            List<Telefono> telefonos = new List<Telefono>();
+            telefonos = db.Telefono.Where(a => a.Cedula == c.Cedula).ToList();
+            int countt = telefonos.Count();
+            if (countt == 1)
+            {
+                modelo.modeloTelefono1 = telefonos.ElementAt(0);
+            }
+            else if (countt == 2)
+            {
+                modelo.modeloTelefono2 = telefonos.ElementAt(1);
+            }
+
+            List<Cuenta> cuentas = new List<Cuenta>();
+            cuentas = db.Cuenta.Where(a => a.Cedula == c.Cedula).ToList();
+            int countc = cuentas.Count();
+            if (countc == 1)
+            {
+                modelo.modeloCuenta1 = cuentas.ElementAt(0);
+            }
+            else if (countc == 2)
+            {
+                modelo.modeloCuenta2 = cuentas.ElementAt(1);
+            }
+            else if (countc == 3)
+            {
+                modelo.modeloCuenta3 = cuentas.ElementAt(2);
+            }
+
+            return View(modelo);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Edit(ModeloIntermedio modelo, string id)
+        {
+            if (ModelState.IsValid)
+            {
+                Cliente cliente = db.Cliente.Find(id);
+                modelo.modeloCliente.Cedula = id;
+                db.Entry(cliente).CurrentValues.SetValues(modelo.modeloCliente);
+                //try
+                //{
+                    db.SaveChanges();
+                //}
+                //catch(Exception ex)
+                //{
+                  //  Console.WriteLine(ex);
+                //}
+                return RedirectToAction("Index");
+            }
+
+            return View(modelo);
+        }
 
         public ActionResult Create()
         {
@@ -110,6 +178,60 @@ namespace Laboratorio_ASP.NET.Controllers
                 ModelState.AddModelError("", "Debe completar toda la información necesaria.");
                 return View(modelo);
             }
+        }
+
+        public ActionResult Delete(string id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Cliente c = db.Cliente.Find(id);
+            if (c == null)
+            {
+                return HttpNotFound();
+            }
+            ModeloIntermedio modelo = new ModeloIntermedio();
+            modelo.modeloCliente = c;
+            List<Telefono> telefonos = new List<Telefono>();
+            telefonos = db.Telefono.Where(a => a.Cedula == c.Cedula).ToList();
+            int countt = telefonos.Count();
+            if (countt == 1)
+            {
+                modelo.modeloTelefono1 = telefonos.ElementAt(0);
+            }
+            else if (countt == 2)
+            {
+                modelo.modeloTelefono2 = telefonos.ElementAt(1);
+            }
+
+            List<Cuenta> cuentas = new List<Cuenta>();
+            cuentas = db.Cuenta.Where(a => a.Cedula == c.Cedula).ToList();
+            int countc = cuentas.Count();
+            if (countc == 1)
+            {
+                modelo.modeloCuenta1 = cuentas.ElementAt(0);
+            }
+            else if (countc == 2)
+            {
+                modelo.modeloCuenta2 = cuentas.ElementAt(1);
+            }
+            else if (countc == 3)
+            {
+                modelo.modeloCuenta3 = cuentas.ElementAt(2);
+            }
+
+            return View(modelo);
+        }
+
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public ActionResult DeleteConfirmed(string id)
+        {
+            Cliente c = db.Cliente.Find(id);
+            db.Cliente.Remove(c);
+            db.SaveChanges();
+            return RedirectToAction("Index");
         }
     }
 }

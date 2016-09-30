@@ -15,9 +15,12 @@ namespace Laboratorio_ASP.NET.Models
 
     public partial class Cuenta
     {
+        [Editable(false)]
         public string Cedula { get; set; }
+        [Editable(false)]
         [Display(Name = "Número de cuenta:")]
         public string Numero { get; set; }
+        [Editable(false)]
         [Display(Name = "Tipo de cuenta:")]
         public string Tipo { get; set; }
     

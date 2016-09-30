@@ -1,0 +1,65 @@
+﻿@model Laboratorio_ASP.NET.Models.ModeloIntermedio
+@{
+    ViewBag.Title = "Eliminar usuario";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Delete</h2>
+
+<h3>Esta seguro de querer eliminar este usuario?</h3>
+<div>
+    <h4>Usuario</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.modeloCliente.Nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.modeloCliente.Nombre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.modeloCliente.Apellido1)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.modeloCliente.Apellido1)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.modeloCliente.Apellido2)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.modeloCliente.Apellido2)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.modeloCliente.Correo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.modeloCliente.Correo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.modeloCliente.Direccion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.modeloCliente.Direccion)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Eliminar" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>
